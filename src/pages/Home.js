@@ -39,8 +39,8 @@ const Home = () => {
             <div className="formWrapper">
                 <img
                     className="homePageLogo"
-                    src="/code-sync.png"
-                    alt="code-sync-logo"
+                    src="/logo.png"
+                    alt="logo"
                 />
                 <h4 className="mainLabel">Paste invitation ROOM ID</h4>
                 <div className="inputGroup">
@@ -55,7 +55,7 @@ const Home = () => {
                     <input
                         type="text"
                         className="inputBox"
-                        placeholder="USERNAME"
+                        placeholder="Username"
                         onChange={(e) => setUsername(e.target.value)}
                         value={username}
                         onKeyUp={handleInputEnter}
@@ -63,24 +63,12 @@ const Home = () => {
                     <button className="btn joinBtn" onClick={joinRoom}>
                         Join
                     </button>
-                    <span className="createInfo">
-                        If you don't have an invite then create &nbsp;
-                        <a
-                            onClick={createNewRoom}
-                            href=""
-                            className="createNewBtn"
-                        >
-                            new room
-                        </a>
+                    <span className="createInfo">If you dont have an Invite then create &nbsp; 
+                 <a onClick={createNewRoom}href="" className="createNewBtn">
+                    new room</a>
                     </span>
                 </div>
             </div>
-            <footer>
-                <h4>
-                    Built with 💛 &nbsp; by &nbsp;
-                    <a href="https://github.com/codersgyan">Coder's Gyan</a>
-                </h4>
-            </footer>
         </div>
     );
 };

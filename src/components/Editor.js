@@ -3,11 +3,13 @@ import Codemirror from 'codemirror';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/theme/dracula.css';
 import 'codemirror/mode/javascript/javascript';
+import 'codemirror/mode/python/python';
+import 'codemirror/mode/clike/clike';
 import 'codemirror/addon/edit/closetag';
 import 'codemirror/addon/edit/closebrackets';
 import ACTIONS from '../Actions';
 
-const Editor = ({ socketRef, roomId, onCodeChange }) => {
+const Editor = ({ socketRef, roomId, onCodeChange, language }) => {
     const editorRef = useRef(null);
     useEffect(() => {
         async function init() {
@@ -50,6 +52,12 @@ const Editor = ({ socketRef, roomId, onCodeChange }) => {
             socketRef.current.off(ACTIONS.CODE_CHANGE);
         };
     }, [socketRef.current]);
+
+    useEffect(() => {
+        if (editorRef.current) {
+            editorRef.current.setOption('mode', language);
+        }
+    }, [language]);
 
     return <textarea id="realtimeEditor"></textarea>;
 };

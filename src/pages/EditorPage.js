@@ -18,6 +18,7 @@ const EditorPage = () => {
     const { roomId } = useParams();
     const reactNavigator = useNavigate();
     const [clients, setClients] = useState([]);
+    const [language, setLanguage] = useState('javascript');
 
     useEffect(() => {
         const init = async () => {
@@ -113,6 +114,20 @@ const EditorPage = () => {
                         ))}
                     </div>
                 </div>
+                <div className="languageSelector">
+                    <h4 className="languageLabel">Language:</h4>
+                    <select
+                        className="languageSelect"
+                        value={language}
+                        onChange={(e) => setLanguage(e.target.value)}
+                    >
+                        <option value="javascript">JavaScript</option>
+                        <option value="python">Python</option>
+                        <option value="text/x-c++src">C++</option>
+                        <option value="text/x-java">Java</option>
+                        <option value="text/x-csrc">C</option>
+                    </select>
+                </div>
                 <button className="btn copyBtn" onClick={copyRoomId}>
                     Copy ROOM ID
                 </button>
@@ -127,6 +142,7 @@ const EditorPage = () => {
                     onCodeChange={(code) => {
                         codeRef.current = code;
                     }}
+                    language={language}
                 />
             </div>
         </div>
